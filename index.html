@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter For Shreya</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Scene wrapper */
+.scene {
+    position: relative;
+    width: 400px;
+    height: 260px;
+}
+
+/* Envelope */
+.envelope {
+    width: 380px;
+    height: 240px;
+    background: linear-gradient(to bottom right, #e7dcc7, #d6c7a8);
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    z-index: 2; /* Initial z-index */
+    transition: z-index 0.5s ease;
+}
+
+/* Name on envelope */
+.name {
+    position: absolute;
+    top: 90px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    color: #3b2f2f;
+}
+
+/* Flap */
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #d6c7a8, #c4b28f);
+    clip-path: polygon(0 0, 50% 65%, 100% 0);
+    transform-origin: top;
+    transition: transform 1.5s ease;
+    z-index: 3;
+}
+
+/* Wax seal */
+.seal {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #b91c1c, #7f1d1d);
+    border-radius: 50%;
+    position: absolute;
+    top: 85px;
+    left: 160px;
+    cursor: pointer;
+    z-index: 4;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.seal.break {
+    transform: scale(0);
+    opacity: 0;
+}
+
+/* Letter container */
+.letter {
+    position: absolute;
+    width: 360px;
+    height: 500px;
+    background: linear-gradient(to bottom, #fffef9, #f5f1e8);
+    left: 10px;
+    top: 10px;
+    border-radius: 4px;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transform: translateY(220px);
+    opacity: 0;
+    transition: transform 1.8s ease, opacity 1.8s ease;
+    z-index: 5; /* Letter now above envelope */
+    overflow-y: auto;
+}
+
+/* Scrollbar styling */
+.letter::-webkit-scrollbar {
+    width: 6px;
+}
+.letter::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+/* Open state */
+.open .flap {
+    transform: rotateX(180deg);
+}
+
+.open .letter {
+    transform: translateY(-280px);
+    opacity: 1;
+}
+
+/* Paragraph fade-in */
+.fade {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: 1s ease;
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Signature */
+.signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    margin-top: 30px;
+}
+
+/* Photo */
+.photo {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.photo img {
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Paper texture */
+.letter::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.02),
+        rgba(0,0,0,0.02) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    pointer-events: none;
+}
+
+/* Instruction */
+.instruction {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+}
+</style>
+</head>
+<body>
+
+<div class="scene">
+
+    <div class="envelope">
+
+        <div class="name">Shreya</div>
+
+        <div class="flap" id="flap"></div>
+
+        <div class="seal" id="seal" onclick="openLetter()"></div>
+
+        <div class="instruction">
+            Click the seal to open your letter
+        </div>
+
+    </div>
+
+    <!-- Letter -->
+    <div class="letter" id="letter">
+
+        <p class="fade">Shreya,</p>
+
+        <p class="fade">
+        I’ve been thinking about everything constantly these past 2 days. Not just what happened Tuesday night but also the bigger picture and especially the pattern of the moments where I react instead of thinking and the moments where I didn’t show up the way you deserved. It hurts me knowing that I was the one who caused you pain when I should have been the one protecting you from it.
+        </p>
+
+        <p class="fade">
+        Regarding Tuesday, what hurts me most isn’t just that I said no. It’s about how I said it as well. It’s the fact that I didn’t pause or think and didn’t consider how it would make you feel. I reacted instantly without slowing down and remembering that this isn’t just about me it’s about us and being your partner in every moment especially the ones that matter.
+        </p>
+
+        <p class="fade">
+        I get it that this is the third time this same thing has happened now. And I understand why that makes it harder to believe my words now and why it makes you question whether things will actually change. And tbh you have every right to feel that way and I know I haven’t been there in the way you deserved from me in those moments.
+
+        <p class="fade">
+        I want you to know that though none of this comes from not caring. It comes from me being too reactive instead of intentional. This realization I have been thinking a lot about because the last thing I ever want is to take you for granted or make you feel like you aren’t valued or heard.
+        </p>
+
+        <p class="fade">
+        Yday I was honestly overwhelmed by everything and scared of hurting you again. Not because I didn’t care but because I care so deeply. I was thinking about how much you mean to me and I don’t want to lose what we have and how disappointed I was in myself for creating this situation again. I realize now that in those moments I should have shown you more clearly how much I was willing to fight for us. It’s not just about how I feel or what I think but actually it’s about how I show up for you and fight for us.
+        </p>
+
+        <p class="fade">
+        You deserve to feel fought for and shouldn’t have to tell me these things. I don’t want to take you for granted and shouldn’t treat you like you’ll always just be there no matter what. You deserve to feel chosen, valued, and protected every single day.
+        </p>
+
+        <p class="fade">
+        I never want to reach a point where I become too comfortable and forget that loving you means continuing to show up and be intentional with my actions.
+        </p>
+
+        <p class="fade">
+        I am not writing this as another promise. I’m writing this because I truly understand now what I need to change. I need to slow down and pause. I need to listen fully before reacting and make sure you feel heard, respected, and included.
+        </p>
+
+        <p class="fade">
+        Not because I have to. But because you matter to me more than my instincts or my immediate reactions.
+
+        <p class="fade">
+        You are my partner, my person. And I want to be someone who makes you feel loved in every moment of every day.
+
+        <p class="fade">
+        I am willing to fight for us. Not just today and when things are hard. But every single day through my actions and growth.
+        </p>
+
+        <p class="fade">
+        You are not someone I ever want to lose or be distant from and not show up the next day and fight for us. I am committed for life to becoming better for you, for us, and for the beautiful life we are building together in nyc.
+
+        <p class="signature fade">
+        I love you.<br>
+        Pranav
+        </p>
+
+        <div class="photo fade">
+            <img src="your-photo.jpg" alt="Us">
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+// Open envelope and letter
+function openLetter() {
+    document.getElementById("seal").classList.add("break");
+    document.getElementById("flap").style.transform = "rotateX(180deg)";
+    document.querySelector(".scene").classList.add("open");
+
+    // Lower envelope z-index so it doesn't cover letter
+    setTimeout(() => {
+        document.querySelector(".envelope").style.zIndex = "0";
+        document.getElementById("flap").style.zIndex = "1";
+    }, 1600);
+}
+
+// Sequential scroll reveal for paragraphs
+const letter = document.getElementById("letter");
+const fades = document.querySelectorAll(".fade");
+
+function revealParagraphs() {
+    fades.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
+        const letterRect = letter.getBoundingClientRect();
+
+        if(rect.top < letterRect.bottom - 50){
+            // Delay based on paragraph index for sequential effect
+            setTimeout(() => {
+                el.classList.add("visible");
+            }, index * 100); // 100ms between each paragraph
+        }
+    });
+}
+
+letter.addEventListener("scroll", revealParagraphs);
+
+// Optional: reveal the first few paragraphs after opening so top text is visible immediately
+setTimeout(() => {
+    for(let i=0; i<3; i++){
+        if(fades[i]) fades[i].classList.add("visible");
+    }
+}, 1800);
+</script>
+
+</body>
+</html>
